@@ -7,10 +7,10 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                node-version: [16.x,18.x]
+                node-version: [18.x]
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
 
             - name: Set up Node.js ${{ matrix.node-version}}
               uses: actions/setup-node@v3
@@ -24,6 +24,6 @@ jobs:
               run: npm test -- --coverage
 
             - name: Upload coverage reports to Codecov
-              uses: codecov/codecov-action@v3
+              uses: codecov/codecov-action@v4.01
               env:
                 CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN}}
